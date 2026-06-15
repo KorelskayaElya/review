@@ -9,9 +9,12 @@ attempt = 0
 while user_guess != secret:
     user_guess = input("Введите ваше число: ") 
     attempt += 1
-    
-    if user_guess > secret:  
-        print("Ваше число больше загаданного. введите число меньше")
-    elif user_guess < secret:  
-        print("Ваше число меньше загаданного. введите число больше")
+    if user_guess.isdigit():
+        user_guess = int(user_guess)
+        if user_guess > secret:  
+            print("Ваше число больше загаданного. введите число меньше")
+        elif user_guess < secret:  
+            print("Ваше число меньше загаданного. введите число больше")
+    else:
+        print("Вы ввели не число, а строчку. Пропробуйте еще раз.")
 print(f"Поздравляем, вы угадали число! Количество попыток {attempt} было использовано")
