@@ -1,7 +1,11 @@
 import math
 
 user_cache = {}
-
+big_list = []
+# не поятно, почему эти функции в одном файле находятся
+# нет комментриев, не понятно, что функции делают
+# читаемость кода отсутствует
+# название перепменных не понятны
 def load_user(user_id):
     if user_id in user_cache:
         return user_cache[user_id]
@@ -16,7 +20,7 @@ def load_user(user_id):
     user_cache[user_id] = data
     return data
 
-def calc_stats(numbers):
+def calc_stats(numbers): # нет комментария
     if len(numbers) == 0:
         return {"error": "empty"}
     
@@ -39,16 +43,19 @@ def calc_stats(numbers):
     }
 
 def divide(a, b):
-    return a / b
-
-def get_status(score):
+    if b != 0:
+        return a / b
+    else:
+        return "Деление на ноль"
+# не понятно, что за статус тут дается
+def get_status(score): # дает результат за баллы 
     if score >= 90:
         return "A"
-    if score >= 80:
+    elif score >= 80:
         return "B"
-    if score >= 70:
+    elif score >= 70:
         return "C"
-    if score >= 60:
+    elif score >= 60:
         return "D"
     return "F"
 
@@ -58,15 +65,18 @@ def find_user(users, name):
             return u
     return None
 
-big_list = []
-
-def append_something(x):
+def append_something(x): # необходим комментрий, что эта функция делает
     big_list.append(x)
     if len(big_list) > 1000:
-        pass
+        print("Действие")
+    else:
+        print("недостаточно элементов для X дейстивия")
 
 if __name__ == "__main__":
   load_user("378576378")
   calc_stats(346536)
-  divide(4, 0)
-  find_user(["bob", "alice"], "stiv")
+  div = divide(4, 0)
+  print(div)
+  name = find_user(["bob", "alice"], "stiv")
+  print(name)
+  append_something(1)
